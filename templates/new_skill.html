@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post">
+    <label for="skill_name">Skill Name</label>
+    <input type="text" 
+        name="skill_name" 
+        placeholder="Skill Name" 
+        value="{{ request.form['skill_name']}}">
+    </input>
+
+    <br>
+
+    <label for="skill_desc">Skill Description</label>
+    <input type="text"
+        name="skill_desc"
+        placeholder="Skill Description"
+        value="{{ request.form['skill_desc'] }}">
+    </input>
+
+    <br>
+
+    <label for="skill_level">Skill Level</label>
+    <input type="number"
+        name="skill_level"
+        value="{{ request.form['skill_level'] }}">
+    </input>
+
+    <br>
+    <button type="submit">Create</button>
+</form>
+{% endblock %}

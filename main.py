@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, url_for, redirect
 import sqlite3
 
 app = Flask(__name__)
@@ -39,8 +39,28 @@ def decrease_skill(skill_name):
 # For testing:
 #add_new_skill('hacking', 'skill about hacking', '10')
 
+@app.route("/new_skill/", methods=('GET', 'POST'))
+def new_skill():
+    if request.method == 'POST':
+        skill_name = request.form['skill_name']
+        skill_desc = request.form['skill_desc']
+        skill_level = request.form['skill_level']
+
+        if not skill_name:
+            return
+        elif not skill_desc:
+            return
+        elif not skill_level:
+            return
+        else:
+            # TODO: Check if skill_name already exists, fail if it does
+            add_new_skill(skill_name, skill_desc, skill_level)
+            return redirect(url_for('skills'))
+
+    return render_template('new_skill.html')
+
 @app.route("/")
-def main():
+def skills():
     conn = get_db_connection()
     skills = conn.execute('SELECT * FROM skills').fetchall()
     conn.close()

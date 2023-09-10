@@ -5,6 +5,10 @@
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body>
+    <nav>
+        <a href="{{ url_for('skills') }}">Skills</a>
+        <a href="{{ url_for('new_skill') }}">New Skill</a>
+    </nav>
     <div class="content">
         {% block content %} {% endblock %}
     </div>
