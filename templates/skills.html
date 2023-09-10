@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Skills {% endblock %}</h1>
+    {% for skill in skills %}
+        <div class="skill">
+            <!-- add bar graphic for skill with mouseover for description -->
+            <p>{{ skill['skill_name'] }}</p>
+            <p>{{ skill['skill_desc'] }}</p>
+            <p>{{ skill['skill_level'] }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
