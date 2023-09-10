@@ -7,7 +7,13 @@
             <!-- add bar graphic for skill with mouseover for description -->
             <p>{{ skill['skill_name'] }}</p>
             <p>{{ skill['skill_desc'] }}</p>
-            <p>{{ skill['skill_level'] }}</p>
+            <p>{{ skill['skill_level'] }}</p> 
+            <form action="/decrease/{{ skill['skill_name'] }}" method="post">
+                <button type="submit">-</button>
+            </form>
+            <form action="/increase/{{ skill['skill_name'] }}" method="post">
+                <button type="submit">+</button>
+            </form>
         </div>
     {% endfor %}
 {% endblock %}
